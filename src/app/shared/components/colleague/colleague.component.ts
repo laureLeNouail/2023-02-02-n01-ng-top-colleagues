@@ -12,5 +12,15 @@ export class ColleagueComponent {
   @Input() score: number = 0;
   @Input() photo: string = "";
 
+  traitementLikeAndHate(val:string){
+    if (val == "LIKE"){
+      this.score = this.score + 10;
+
+    }else if(val == "HATE"){
+      this.score = this.score - 10;
+    }
+
+  }
+
 
 }

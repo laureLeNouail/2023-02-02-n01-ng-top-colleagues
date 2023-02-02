@@ -25,5 +25,4 @@ export class AppComponent {
 
   tabCollegues: Colleague[] = [this.laure,this.lucas, this.eli]
 
-
 }
