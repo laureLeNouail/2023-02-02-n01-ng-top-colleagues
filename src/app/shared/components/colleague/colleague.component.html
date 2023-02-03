@@ -1,8 +1,10 @@
-<div>
-  <img src="https://randomuser.me/api/portraits/{{photo}}.jpg">
+<div class="my-3 mx-2 border rounded">
+  <div class="my-4">
+    <img src="https://randomuser.me/api/portraits/{{photo}}.jpg">
 
-  <p>{{pseudo}}</p>
-  <p>{{score}}</p>
-  <tc-like-hate (change)="traitementLikeAndHate($event)" [isScoreUp]="isScoreUp" [isScoreDown]="isScoreDown"></tc-like-hate>
+    <p>{{pseudo}}</p>
+    <p>{{score}}</p>
+    <tc-like-hate (change)="traitementLikeAndHate($event)" [isScoreUp]="isScoreUp" [isScoreDown]="isScoreDown"></tc-like-hate>
+  </div>
 
 </div>
