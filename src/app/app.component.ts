@@ -14,7 +14,7 @@ export class AppComponent {
   }
   lucas:Colleague = {
     pseudo: "lukreator",
-    score: 500,
+    score: -940,
     photo: "men/32"
   }
   eli:Colleague = {
@@ -22,7 +22,12 @@ export class AppComponent {
     score: 900,
     photo: "men/2"
   }
+  joris:Colleague = {
+    pseudo: "Jojo",
+    score: 2,
+    photo: "men/18"
+  }
 
-  tabCollegues: Colleague[] = [this.laure,this.lucas, this.eli]
+  tabCollegues: Colleague[] = [this.laure,this.lucas, this.eli, this.joris]
 
 }

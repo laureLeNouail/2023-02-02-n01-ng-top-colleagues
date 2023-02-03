@@ -12,12 +12,32 @@ export class ColleagueComponent {
   @Input() score: number = 0;
   @Input() photo: string = "";
 
+  isScoreUp = false;
+  isScoreDown = false;
+
   traitementLikeAndHate(val:string){
     if (val == "LIKE"){
-      this.score = this.score + 10;
+      if(this.score >= 1000){
+        this.isScoreUp = true;
+        this.isScoreDown = false;
+      }else{
+        this.score = this.score + 10;
+        this.isScoreUp = false;
+        this.isScoreDown = false;
+
+      }
 
     }else if(val == "HATE"){
-      this.score = this.score - 10;
+      if(this.score <= -1000){
+        this.isScoreDown = true;
+        this.isScoreUp = false;
+
+      }else{
+        this.score = this.score - 10;
+        this.isScoreDown = false;
+        this.isScoreUp = false;
+
+      }
     }
 
   }

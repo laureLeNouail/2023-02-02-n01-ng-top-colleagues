@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'tc-like-hate',
@@ -8,6 +8,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class LikeHateComponent {
 
   @Output() change:EventEmitter<string> = new EventEmitter<string>();
+
+  @Input() isScoreUp:boolean = true;
+  @Input() isScoreDown:boolean = true;
 
   aime() {
     this.change.emit("LIKE");
