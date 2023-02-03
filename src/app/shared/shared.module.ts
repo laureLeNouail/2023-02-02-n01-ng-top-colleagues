@@ -20,8 +20,6 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
     CommonModule
   ],
   exports: [
-    LikeHateComponent,
-    ColleagueComponent,
     ColleagueListComponent,
     VotingHistoryComponent,
   ]

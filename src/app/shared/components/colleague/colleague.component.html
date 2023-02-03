@@ -1,10 +1,10 @@
 <div class="my-3 mx-2 border rounded">
-  <div class="my-4">
-    <img src="https://randomuser.me/api/portraits/{{photo}}.jpg">
+  <div class="card">
+    <img class="card-img-top" src="https://randomuser.me/api/portraits/{{photo}}.jpg">
 
-    <p>{{pseudo | uppercase}}</p>
-    <p>{{score | ScorePipe}}</p>
-    <tc-like-hate (change)="traitementLikeAndHate($event)" [isScoreUp]="isScoreUp" [isScoreDown]="isScoreDown"></tc-like-hate>
+    <p class="card-title mt-2">{{pseudo | uppercase}}</p>
+    <p class="card-text">{{score | ScorePipe}}</p>
+    <tc-like-hate class="mb-3" (change)="traitementLikeAndHate($event)" [isScoreUp]="isScoreUp" [isScoreDown]="isScoreDown"></tc-like-hate>
   </div>
 
 </div>
