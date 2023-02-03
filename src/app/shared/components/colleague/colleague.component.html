@@ -3,7 +3,7 @@
     <img src="https://randomuser.me/api/portraits/{{photo}}.jpg">
 
     <p>{{pseudo | uppercase}}</p>
-    <p>{{score}}</p>
+    <p>{{score | ScorePipe}}</p>
     <tc-like-hate (change)="traitementLikeAndHate($event)" [isScoreUp]="isScoreUp" [isScoreDown]="isScoreDown"></tc-like-hate>
   </div>
 

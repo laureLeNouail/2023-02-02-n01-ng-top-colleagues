@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {Colleague} from "../../../models/colleague";
+import {ScorePipe} from "../../pipes/score.pipe";
 
 @Component({
   selector: 'tc-colleague',
   templateUrl: './colleague.component.html',
-  styleUrls: ['./colleague.component.scss']
+  styleUrls: ['./colleague.component.scss'],
 })
 export class ColleagueComponent {
 
