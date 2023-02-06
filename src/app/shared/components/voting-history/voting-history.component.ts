@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Vote} from "../../../models/vote";
 import {Colleague} from "../../../models/colleague";
 import {LikeHate} from "../../../models/like-hate";
+import {VoteService} from "../../../providers/vote.service";
 
 @Component({
   selector: 'tc-voting-history',
@@ -10,51 +11,11 @@ import {LikeHate} from "../../../models/like-hate";
 })
 export class VotingHistoryComponent {
 
-  laure:Colleague = {
-    pseudo: "lolo",
-    score: 200,
-    photo: "lego/6"
-  }
-  lucas:Colleague = {
-    pseudo: "lukreator",
-    score: -940,
-    photo: "lego/2"
-  }
-  eli:Colleague = {
-    pseudo: "strifey",
-    score: 900,
-    photo: "lego/3"
-  }
-  joris:Colleague = {
-    pseudo: "Jojo",
-    score: 2,
-    photo: "lego/4"
-  }
-  antoine:Colleague = {
-    pseudo: "TavTav",
-    score: 651,
-    photo: "lego/5"
-  }
+  tabVotes: Vote[] = [];
 
-
-  vote1:Vote ={
-    colleague: this.joris,
-    vote : LikeHate.HATE
+  constructor(private voteSrv:VoteService) {
+    this.tabVotes = this.voteSrv.list();
   }
-  vote2:Vote ={
-    colleague: this.laure,
-    vote : LikeHate.LIKE
-  }
-  vote3:Vote ={
-    colleague: this.lucas,
-    vote : LikeHate.LIKE
-  }
-  vote4:Vote ={
-    colleague: this.joris,
-    vote : LikeHate.HATE
-  }
-
-  tabVotes: Vote[] = [this.vote1,this.vote2,this.vote3,this.vote4]
 
   suppr(id:number){
     this.tabVotes.splice(id,1);
