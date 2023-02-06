@@ -8,11 +8,11 @@ import {ColleagueService} from "../../../providers/colleague.service";
   styleUrls: ['./colleague-list.component.scss']
 })
 export class ColleagueListComponent {
-  
+
   tabCollegues: Colleague[] = [];
 
   constructor(private colleaguesSrv:ColleagueService) {
-    this.tabCollegues = this.colleaguesSrv.list();
+    this.colleaguesSrv.appelApi().subscribe(tabcoll =>this.tabCollegues = tabcoll);
   }
 
 }

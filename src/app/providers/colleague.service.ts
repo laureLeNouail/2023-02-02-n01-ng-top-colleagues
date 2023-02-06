@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Colleague } from '../models/colleague';
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColleagueService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  appelApi(): Observable<Colleague[]> {
+    return this.http.get<Colleague[]>('https://dev.cleverapps.io/api/v2/colleagues');
+  }
+
 
   laure:Colleague = {
     pseudo: "lolo",
