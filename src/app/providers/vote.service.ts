@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Colleague} from "../models/colleague";
 import {Vote} from "../models/vote";
 import {LikeHate} from "../models/like-hate";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +60,24 @@ export class VoteService {
     return this.listVotes;
 
   }
+
+  private subjectNbLike = new Subject<LikeHate>;
+  private subjectNbHate = new Subject<LikeHate>;
+
+  countLike(){
+    return this.subjectNbLike.asObservable();
+  }
+  countHate(){
+    return this.subjectNbHate.asObservable();
+  }
+
+  clickLike(data:LikeHate){
+    this.subjectNbLike.next(data)
+  }
+
+  clickHate(data:LikeHate){
+    this.subjectNbHate.next(data)
+  }
+
+
 }
