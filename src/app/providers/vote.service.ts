@@ -2,13 +2,48 @@ import { Injectable } from '@angular/core';
 import {Colleague} from "../models/colleague";
 import {Vote} from "../models/vote";
 import {LikeHate} from "../models/like-hate";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ColleagueService} from "./colleague.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoteService {
-  constructor() { }
+  constructor(private http:HttpClient, private collSrv:ColleagueService) { }
+
+
+  private subjectPostLike = new Subject<Vote>;
+
+  private subjectPostHate = new Subject<Vote>;
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  };
+
+  postVoteLike(pseudo:string){
+    this.http.post('https://dev.cleverapps.io/api/v2/votes',{
+      like_hate : "LIKE",
+      pseudo: pseudo
+    }, this.httpOptions).subscribe(() => {
+      this.collSrv.appelApi();
+
+    })
+
+  }
+
+  postVoteHate(pseudo:string){
+    this.http.post('https://dev.cleverapps.io/api/v2/votes',{
+      like_hate : "HATE",
+      pseudo: pseudo
+    }, this.httpOptions).subscribe(() =>{
+      this.collSrv.appelApi();
+
+    })
+
+  }
 
   laure:Colleague = {
     pseudo: "lolo",

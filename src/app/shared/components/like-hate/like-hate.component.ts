@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {VoteService} from "../../../providers/vote.service";
 import {LikeHate} from "../../../models/like-hate";
+import {HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'tc-like-hate',
@@ -22,6 +23,7 @@ export class LikeHateComponent {
   aime() {
     this.change.emit("LIKE");
     this.buttonSrv.clickLike(LikeHate.LIKE)
+
   }
 
   deteste(){

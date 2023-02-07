@@ -12,7 +12,7 @@ export class ColleagueListComponent {
   tabCollegues: Colleague[] = [];
 
   constructor(private colleaguesSrv:ColleagueService) {
-    this.colleaguesSrv.appelApi().subscribe(tabcoll =>this.tabCollegues = tabcoll);
+    this.colleaguesSrv.changeColleagues().subscribe(tabcoll =>this.tabCollegues = tabcoll);
   }
 
 }

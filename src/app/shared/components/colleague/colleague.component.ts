@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Colleague} from "../../../models/colleague";
 import {ScorePipe} from "../../pipes/score.pipe";
+import {VoteService} from "../../../providers/vote.service";
 
 @Component({
   selector: 'tc-colleague',
@@ -8,6 +9,9 @@ import {ScorePipe} from "../../pipes/score.pipe";
   styleUrls: ['./colleague.component.scss'],
 })
 export class ColleagueComponent {
+
+  constructor(private voteSrv:VoteService) {
+  }
 
   @Input() pseudo:string = "";
   @Input() score: number = 0;
@@ -22,9 +26,9 @@ export class ColleagueComponent {
         this.isScoreUp = true;
         this.isScoreDown = false;
       }else{
-        this.score = this.score + 10;
         this.isScoreUp = false;
         this.isScoreDown = false;
+        this.voteSrv.postVoteLike(this.pseudo);
 
       }
 
@@ -34,9 +38,10 @@ export class ColleagueComponent {
         this.isScoreUp = false;
 
       }else{
-        this.score = this.score - 10;
         this.isScoreDown = false;
         this.isScoreUp = false;
+        this.voteSrv.postVoteHate(this.pseudo);
+
 
       }
     }
