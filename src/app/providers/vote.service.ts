@@ -10,7 +10,9 @@ import {ColleagueService} from "./colleague.service";
   providedIn: 'root'
 })
 export class VoteService {
-  constructor(private http:HttpClient, private collSrv:ColleagueService) { }
+  constructor(private http:HttpClient, private collSrv:ColleagueService) {
+    this.appelApiVote()
+  }
 
 
   private subjectPostLike = new Subject<Vote>;
@@ -34,6 +36,21 @@ export class VoteService {
 
   }
 
+  private subjectVote = new Subject<Vote[]>;
+
+  chargeApiSubject(){
+    return this.subjectVote.asObservable();
+  }
+
+  appelApiVote(){
+    this.http.get<Vote[]>('https://dev.cleverapps.io/api/v2/votes').subscribe(
+      (data:Vote[]) =>{
+        this.subjectVote.next(data)
+        this.appelApiVote()
+      }
+    )
+  }
+
   postVoteHate(pseudo:string){
     this.http.post('https://dev.cleverapps.io/api/v2/votes',{
       like_hate : "HATE",
@@ -45,56 +62,7 @@ export class VoteService {
 
   }
 
-  laure:Colleague = {
-    pseudo: "lolo",
-    score: 200,
-    photo: "lego/6"
-  }
-  lucas:Colleague = {
-    pseudo: "lukreator",
-    score: -940,
-    photo: "lego/2"
-  }
-  eli:Colleague = {
-    pseudo: "strifey",
-    score: 900,
-    photo: "lego/3"
-  }
-  joris:Colleague = {
-    pseudo: "Jojo",
-    score: 2,
-    photo: "lego/4"
-  }
-  antoine:Colleague = {
-    pseudo: "TavTav",
-    score: 651,
-    photo: "lego/5"
-  }
 
-
-  vote1:Vote ={
-    colleague: this.joris,
-    vote : LikeHate.HATE
-  }
-  vote2:Vote ={
-    colleague: this.laure,
-    vote : LikeHate.LIKE
-  }
-  vote3:Vote ={
-    colleague: this.lucas,
-    vote : LikeHate.LIKE
-  }
-  vote4:Vote ={
-    colleague: this.joris,
-    vote : LikeHate.HATE
-  }
-
-  listVotes: Vote[] = [this.vote1,this.vote2,this.vote3,this.vote4]
-
-  list(): Vote[]{
-    return this.listVotes;
-
-  }
 
   private subjectNbLike = new Subject<LikeHate>;
   private subjectNbHate = new Subject<LikeHate>;

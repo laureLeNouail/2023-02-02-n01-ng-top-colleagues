@@ -4,11 +4,11 @@
   </div>
 
   <div id="card" *ngFor="let vote of tabVotes" class="d-flex m-2 border">
-    <img src="https://randomuser.me/api/portraits/{{vote.colleague.photo}}.jpg">
+    <img src="{{vote.colleague.photo}}">
 
     <div class="d-flex flex-column">
       <p class="m-1">{{vote.colleague.pseudo | uppercase}}</p>
-      <p *ngIf="vote.vote==1; then thenBlock else elseBlock" ></p>
+      <p *ngIf="vote.like_hate==hate; then thenBlock else elseBlock" ></p>
       <ng-template #thenBlock><p class="mx-3">{{vote.colleague.pseudo}} est detesté(e), son score est désormais de {{vote.colleague.score | ScorePipe}}</p></ng-template>
       <ng-template #elseBlock><p class="mx-3">{{vote.colleague.pseudo}} est aimé(e), son score est désormais de {{vote.colleague.score | ScorePipe}}</p></ng-template>
 

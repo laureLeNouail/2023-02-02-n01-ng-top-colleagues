@@ -1,6 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Vote} from "../../../models/vote";
-import {Colleague} from "../../../models/colleague";
 import {LikeHate} from "../../../models/like-hate";
 import {VoteService} from "../../../providers/vote.service";
 
@@ -13,8 +12,10 @@ export class VotingHistoryComponent {
 
   tabVotes: Vote[] = [];
 
+  hate: LikeHate = LikeHate.HATE;
+
   constructor(private voteSrv:VoteService) {
-    this.tabVotes = this.voteSrv.list();
+    this.voteSrv.chargeApiSubject().subscribe(listeVotes => this.tabVotes = listeVotes);
   }
 
   suppr(id:number){
