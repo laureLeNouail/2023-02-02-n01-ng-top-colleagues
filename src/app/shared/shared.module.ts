@@ -7,6 +7,8 @@ import { ScorePipe } from '../shared/pipes/score.pipe';
 import { VotingHistoryComponent } from '../shared/components/voting-history/voting-history.component';
 import { CounterComponent } from '../shared/components/counter/counter.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { CreateColleagueFormsComponent } from './components/create-colleague-forms/create-colleague-forms.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -17,16 +19,20 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ColleagueListComponent,
     ScorePipe,
     VotingHistoryComponent,
-    CounterComponent
+    CounterComponent,
+    CreateColleagueFormsComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     ColleagueListComponent,
     VotingHistoryComponent,
     CounterComponent,
+    CreateColleagueFormsComponent,
+
   ]
 })
 export class SharedModule {

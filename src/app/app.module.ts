@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {WelcomeModule} from "./pages/welcome/welcome.module";
 import {CounterComponent} from "./shared/components/counter/counter.component";
 import {SharedModule} from "./shared/shared.module";
+import {CreateColleagueModule} from "./pages/create-colleague/create-colleague.module";
 
 @NgModule({
   // la liste des composants graphiques
@@ -16,7 +17,8 @@ import {SharedModule} from "./shared/shared.module";
     BrowserModule,
     NgbModule,
     WelcomeModule,
-    SharedModule
+    SharedModule,
+    CreateColleagueModule
   ],
   providers: [],
   bootstrap: [AppComponent]
