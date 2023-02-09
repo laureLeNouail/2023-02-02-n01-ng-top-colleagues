@@ -31,6 +31,8 @@ export class VoteService {
       pseudo: pseudo
     }, this.httpOptions).subscribe(() => {
       this.collSrv.appelApi();
+      this.appelApiVote();
+
 
     })
 
@@ -46,7 +48,6 @@ export class VoteService {
     this.http.get<Vote[]>('https://dev.cleverapps.io/api/v2/votes').subscribe(
       (data:Vote[]) =>{
         this.subjectVote.next(data)
-        this.appelApiVote()
       }
     )
   }
@@ -57,6 +58,7 @@ export class VoteService {
       pseudo: pseudo
     }, this.httpOptions).subscribe(() =>{
       this.collSrv.appelApi();
+      this.appelApiVote();
 
     })
 

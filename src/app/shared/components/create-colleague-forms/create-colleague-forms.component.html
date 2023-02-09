@@ -3,19 +3,19 @@
   <form class="m-3" (ngSubmit)="submit()" >
     <div class="form-group mb-2">
       <label for="pseudo" class="mb-1">Pseudo</label>
-      <input [(ngModel)]="newColleague.pseudo" type="text" class="form-control" id="pseudo" placeholder="Pseudo" required>
+      <input [(ngModel)]="newColleague.pseudo" name="pseudo" type="text" class="form-control" id="pseudo" placeholder="Pseudo" required>
     </div>
     <div class="form-group mb-2">
       <label for="nom" class="mb-1">Nom</label>
-      <input [(ngModel)]="newColleague.nom" type="text" class="form-control" id="nom" placeholder="Nom" minlength="2" required>
+      <input [(ngModel)]="newColleague.last" name="nom" type="text" class="form-control" id="nom" placeholder="Nom" minlength="2" required>
     </div>
     <div class="form-group mb-2">
       <label for="prenom" class="mb-1">Prénom</label>
-      <input [(ngModel)]="newColleague.prenom" type="text" class="form-control" id="prenom" placeholder="Prenom" minlength="2" required>
+      <input [(ngModel)]="newColleague.first" name="prenom" type="text" class="form-control" id="prenom" placeholder="Prenom" minlength="2" required>
     </div>
     <div class="form-group mb-3">
       <label for="photo" class="mb-1">Photo URL</label>
-      <input [(ngModel)]="newColleague.photo"  type="text" class="form-control" id="photo" placeholder="URL" required>
+      <input [(ngModel)]="newColleague.photo" name="photo"  type="text" class="form-control" id="photo" placeholder="URL" required>
     </div>
     <div class="d-flex justify-content-end">
       <button type="submit" class="btn btn-primary">Ajouter</button>

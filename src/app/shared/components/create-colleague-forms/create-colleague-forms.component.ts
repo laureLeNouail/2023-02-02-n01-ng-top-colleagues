@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {Colleague} from "../../../models/colleague";
 import {CollegueForm} from "../../../models/collegue-form";
+import {ColleagueService} from "../../../providers/colleague.service";
 
 @Component({
   selector: 'tc-create-colleague-forms',
@@ -11,14 +12,26 @@ import {CollegueForm} from "../../../models/collegue-form";
 export class CreateColleagueFormsComponent {
   newColleague:CollegueForm= {
     pseudo:"",
-    score : 0,
     photo :"",
-    nom:"",
-    prenom:""
+    last:"",
+    first:""
 
   };
 
+  constructor(private collSrv:ColleagueService) {
+  }
+
   submit(){
+
+    this.collSrv.postNouveauCollegue(this.newColleague);
+
+    this.newColleague = {
+      pseudo:"",
+      photo :"",
+      last:"",
+      first:""
+
+    };
 
   }
 
